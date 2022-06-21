@@ -1,0 +1,29 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": ["prettier", "plugin:react/recommended"],
+  "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["error", {"endOfLine": "auto"}],
+    "indent": ["error", 2],
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "no-await-in-loop": "warn",
+    "array-bracket-newline": "error",
+    "array-callback-return": "error",
+    "no-unused-vars": "error"
+  },
+  "ignorePatterns": ["node_modules", "dist", "env"]
+}

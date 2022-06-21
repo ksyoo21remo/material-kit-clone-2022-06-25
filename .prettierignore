@@ -1,0 +1,12 @@
+/node_modules
+/env
+#IDE config files
+.idea
+# Test Report
+/.nyc_output
+/coverage
+/.github
+/.platform
+/.ebextensions
+/dist
+/build
