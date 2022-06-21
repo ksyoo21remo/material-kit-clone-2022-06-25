@@ -6,10 +6,16 @@
   },
   "env": {
     "es6": true,
-    "node": true
+    "browser": true
   },
-  "extends": ["prettier"],
+  "extends": ["prettier", "plugin:react/recommended"],
   "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "root": true,
   "rules": {
     "prettier/prettier": ["error", {"endOfLine": "auto"}],
     "indent": ["error", 2],
@@ -20,5 +26,5 @@
     "array-callback-return": "error",
     "no-unused-vars": "error"
   },
-  "ignorePatterns": ["frontend", "node_modules", "dist", "env", "tsconfig.json"]
+  "ignorePatterns": ["node_modules", "dist", "env"]
 }

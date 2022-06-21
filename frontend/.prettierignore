@@ -1,4 +1,3 @@
-/frontend
 /node_modules
 /env
 #IDE config files
@@ -10,4 +9,4 @@
 /.platform
 /.ebextensions
 /dist
-tsconfig.json
+/build
