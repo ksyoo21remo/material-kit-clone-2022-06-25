@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 function App() {
   return (
     <Container>
-      <Typography variant={"h2"}>Welcome to React Router!</Typography>
+      <Typography variant={"h2"}>Espotec Admin Page</Typography>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
