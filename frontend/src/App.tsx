@@ -1,16 +1,23 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Authentication from "./pages/Authentication";
+import { paths } from "./paths";
 
 function App() {
   return (
     <Container>
-      <Typography variant={"h2"}>Espotec Admin Page</Typography>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
+        <Route path={paths.home} element={<Home />} />
+        <Route
+          path={paths.signIn}
+          element={<Authentication.SignIn />}
+        />
+        <Route
+          path={paths.signUp}
+          element={<Authentication.SignUp />}
+        />
         <Route
           path="*"
           element={<Navigate to={"/"} replace={true} />}

@@ -1,15 +1,24 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
-  Card,
   Container,
-  Divider,
-  Link,
   Typography,
+  Divider,
+  Card,
 } from "@mui/material";
-import LoginForm from "./LoginForm";
+import SignInForm from "./SignInForm";
+import { paths } from "../../../paths";
 
-function Login() {
+interface SignInBodyProps {
+  currentTab: number;
+  currentTypeAdmin: string;
+  type: number;
+}
+
+function SignInBody(props: PropsWithChildren<SignInBodyProps>) {
+  const { currentTab, currentTypeAdmin, type } = props;
+
   return (
     <Box
       component="main"
@@ -38,14 +47,7 @@ function Login() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h4">로그인</Typography>
-            <Typography
-              color="textSecondary"
-              sx={{ mt: 2 }}
-              variant="body2"
-            >
-              내부 플랫폼에 로그인
-            </Typography>
+            <Typography variant="h4">{currentTypeAdmin}</Typography>
           </Box>
           <Box
             sx={{
@@ -53,18 +55,16 @@ function Login() {
               mt: 3,
             }}
           >
-            <LoginForm />
+            <SignInForm type={type} />
           </Box>
           <Divider sx={{ my: 3 }} />
           <Box>
-            <Link color="textSecondary" variant="body2">
+            <RouterLink
+              to={paths.home + paths.signUp}
+              state={{ type: type ?? currentTab }}
+            >
               새로운 계정 생성
-            </Link>
-          </Box>
-          <Box sx={{ mt: 1 }}>
-            <Link color="textSecondary" variant="body2">
-              비밀번호 찾기
-            </Link>
+            </RouterLink>
           </Box>
         </Card>
       </Container>
@@ -72,4 +72,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignInBody;
