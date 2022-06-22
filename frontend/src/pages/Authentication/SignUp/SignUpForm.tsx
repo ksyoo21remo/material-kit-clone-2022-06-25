@@ -7,9 +7,11 @@ import {
   FormHelperText,
   TextField,
 } from "@mui/material";
+import { SignUpParam } from "./types";
+import SignUpApiExecutorBuilder from "./SignUpApiExecutorBuilder";
 
 interface SignUpFormProps {
-  type?: number;
+  type: number;
 }
 
 function SignUpForm(props: PropsWithChildren<SignUpFormProps>) {
@@ -61,12 +63,37 @@ function SignUpForm(props: PropsWithChildren<SignUpFormProps>) {
         ),
     }),
     onSubmit: async (values, formikHelpers): Promise<void> => {
-      alert(
-        `타입 ${type} 관리자 가입` +
-          "\n" +
-          `values ${JSON.stringify(values, null, 2)}`,
-      );
-      formikHelpers.setSubmitting(false);
+      const signUpParam: SignUpParam = {
+        loginid: values.loginId,
+        password: values.password,
+        mbrname: values.name,
+        phone: values.loginId,
+      };
+      try {
+        const signUpBuilder = new SignUpApiExecutorBuilder(type);
+        const signUpApi = signUpBuilder.build();
+        const data = await signUpApi.request(signUpParam);
+        const { uuid, accessToken, refreshToken } = data;
+        if (!accessToken) {
+          throw new Error(
+            "관리자 " + `${type}` + " 가입 잘못된 액세스 토큰",
+          );
+        }
+        globalThis.localStorage.setItem("uuid", uuid);
+        globalThis.localStorage.setItem("accessToken", accessToken);
+        globalThis.localStorage.setItem("refreshToken", refreshToken);
+        globalThis.localStorage.setItem("type", type.toString());
+        formikHelpers.setStatus({ success: true });
+      } catch (err) {
+        formikHelpers.setStatus({ success: false });
+        if (err instanceof Error) {
+          formikHelpers.setErrors({ submit: err.message });
+          return;
+        }
+        formikHelpers.setErrors({ submit: "알 수 없는 오류 발생" });
+      } finally {
+        formikHelpers.setSubmitting(false);
+      }
     },
   });
 

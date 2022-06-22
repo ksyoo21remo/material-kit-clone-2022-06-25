@@ -89,7 +89,6 @@ function SignIn() {
           </Tabs>
           <Divider sx={{ mb: 3 }} />
           <SignInBody
-            currentTab={currentTab}
             currentTypeAdmin={currentTypeAdmin}
             type={currentTab}
           />

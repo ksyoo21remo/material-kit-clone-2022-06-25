@@ -89,7 +89,6 @@ function SignUp() {
           </Tabs>
           <Divider sx={{ mb: 3 }} />
           <SignUpBody
-            currentTab={currentTab}
             currentTypeAdmin={currentTypeAdmin}
             type={currentTab}
           />

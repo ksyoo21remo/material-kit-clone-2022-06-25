@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import SignInApiExecutorBuilder from "./SignInApiExecutorBuilder";
+import { SignInParam } from "./types";
 
 interface SignInFormProps {
   type: number;
@@ -39,13 +41,36 @@ function SignInForm(props: PropsWithChildren<SignInFormProps>) {
         .min(8, "최소 8글자로 입력해주세요")
         .max(255, "최대 255글자까지 가능합니다"),
     }),
-    onSubmit: (values, formikHelpers) => {
-      alert(
-        `타입 ${type} 관리자 로그인` +
-          "\n" +
-          `values ${JSON.stringify(values, null, 2)}`,
-      );
-      formikHelpers.setSubmitting(false);
+    onSubmit: async (values, formikHelpers) => {
+      const signInArgs: SignInParam = {
+        loginid: values.loginId,
+        password: values.password,
+      };
+      try {
+        const signInBuilder = new SignInApiExecutorBuilder(type);
+        const signInApi = signInBuilder.build();
+        const data = await signInApi.request(signInArgs);
+        const { uuid, accessToken, refreshToken } = data;
+        if (!accessToken) {
+          throw new Error(
+            "관리자 " + `${type}` + " 로그인 잘못된 액세스 토큰",
+          );
+        }
+        globalThis.localStorage.setItem("uuid", uuid);
+        globalThis.localStorage.setItem("accessToken", accessToken);
+        globalThis.localStorage.setItem("refreshToken", refreshToken);
+        globalThis.localStorage.setItem("type", type.toString());
+        formikHelpers.setStatus({ success: true });
+      } catch (err) {
+        formikHelpers.setStatus({ success: false });
+        if (err instanceof Error) {
+          formikHelpers.setErrors({ submit: err.message });
+          return;
+        }
+        formikHelpers.setErrors({ submit: "알 수 없는 오류 발생" });
+      } finally {
+        formikHelpers.setSubmitting(false);
+      }
     },
   });
 

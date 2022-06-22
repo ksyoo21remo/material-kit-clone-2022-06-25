@@ -11,13 +11,12 @@ import SignUpForm from "./SignUpForm";
 import { paths } from "../../../paths";
 
 interface SignUpBodyProps {
-  currentTab: number;
   currentTypeAdmin: string;
-  type?: number;
+  type: number;
 }
 
 function SignUpBody(props: PropsWithChildren<SignUpBodyProps>) {
-  const { currentTab, currentTypeAdmin, type } = props;
+  const { currentTypeAdmin, type } = props;
 
   return (
     <>
@@ -62,7 +61,7 @@ function SignUpBody(props: PropsWithChildren<SignUpBodyProps>) {
             <Box>
               <RouterLink
                 to={paths.home + paths.signIn}
-                state={{ type: type ?? currentTab }}
+                state={{ type }}
               >
                 기존 계정으로 로그인
               </RouterLink>
