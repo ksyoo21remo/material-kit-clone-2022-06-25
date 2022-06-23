@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Container } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import { SettingsContext } from "./contexts/settings-context";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
 import { paths } from "./paths";
+import { createTheme } from "./theme";
 
 function App() {
+  const { settings } = useContext(SettingsContext);
+
   return (
-    <Container>
+    <ThemeProvider
+      theme={createTheme({
+        direction: settings.direction,
+        responsiveFontSizes: settings.responsiveFontSizes,
+        mode: settings.theme,
+      })}
+    >
       <Routes>
         <Route path={paths.home} element={<Home />} />
         <Route
@@ -25,7 +35,7 @@ function App() {
           element={<Navigate to={"/"} replace={true} />}
         />
       </Routes>
-    </Container>
+    </ThemeProvider>
   );
 }
 

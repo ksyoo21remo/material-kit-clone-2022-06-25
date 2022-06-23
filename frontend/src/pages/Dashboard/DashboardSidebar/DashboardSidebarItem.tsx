@@ -1,7 +1,8 @@
 import React, { PropsWithChildren, ReactNode, useState } from "react";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import type { ListItemProps } from "@mui/material";
 import { Box, Button, Collapse, ListItem } from "@mui/material";
+import { Link } from "react-router-dom";
 import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down";
 import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
 
@@ -34,6 +35,7 @@ function DashboardSidebarItem(
   } = props;
   const [open, setOpen] = useState<boolean>(Boolean(openProp));
 
+  // eslint-disable-next-line
   const handleToggle = (): void => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -142,5 +144,21 @@ function DashboardSidebarItem(
     </ListItem>
   );
 }
+
+DashboardSidebarItem.propTypes = {
+  active: PropTypes.bool,
+  children: PropTypes.node,
+  depth: PropTypes.number.isRequired,
+  icon: PropTypes.node,
+  info: PropTypes.node,
+  open: PropTypes.bool,
+  path: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+DashboardSidebarItem.defaultProps = {
+  active: false,
+  open: false,
+};
 
 export default DashboardSidebarItem;

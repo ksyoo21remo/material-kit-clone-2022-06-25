@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, ReactNode, useState } from "react";
 import { Box, styled } from "@mui/material";
 import DashboardNavbar from "./DashboardNavbar";
 import DashboardSidebar from "./DashboardSidebar";
@@ -13,8 +13,15 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   },
 }));
 
-function DashboardLayout(props: PropsWithChildren<{}>) {
+interface DashboardLayoutProps {
+  children: ReactNode;
+}
+
+function DashboardLayout(
+  props: PropsWithChildren<DashboardLayoutProps>,
+) {
   const { children } = props;
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -27,11 +34,18 @@ function DashboardLayout(props: PropsWithChildren<{}>) {
             width: "100%",
           }}
         >
+          <Box>대시보드 헤더</Box>
           {children}
+          <Box>대시보드 푸터</Box>
         </Box>
       </DashboardLayoutRoot>
-      <DashboardNavbar />
-      <DashboardSidebar />
+      <DashboardNavbar
+        onOpenSidebar={(): void => setIsSidebarOpen(true)}
+      />
+      <DashboardSidebar
+        onClose={(): void => setIsSidebarOpen(false)}
+        open={isSidebarOpen}
+      />
     </>
   );
 }

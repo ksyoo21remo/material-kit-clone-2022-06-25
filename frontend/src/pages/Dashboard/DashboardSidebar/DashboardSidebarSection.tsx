@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, ReactNode } from "react";
+import PropTypes from "prop-types";
 import { List, ListSubheader } from "@mui/material";
 import type { ListProps } from "@mui/material";
 import DashboardSidebarItem from "./DashboardSidebarItem";
@@ -92,7 +93,7 @@ const reduceChildRoutes = ({
 function DashboardSidebarSection(
   props: PropsWithChildren<DashboardSidebarSectionProps>,
 ) {
-  const { items, path, title } = props;
+  const { items, path, title, ...other } = props;
 
   return (
     <List
@@ -112,6 +113,7 @@ function DashboardSidebarSection(
           {title}
         </ListSubheader>
       }
+      {...other}
     >
       {renderNavItems({
         items,
@@ -120,5 +122,11 @@ function DashboardSidebarSection(
     </List>
   );
 }
+
+DashboardSidebarSection.propTypes = {
+  items: PropTypes.array.isRequired,
+  path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default DashboardSidebarSection;

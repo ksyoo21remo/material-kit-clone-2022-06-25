@@ -12,7 +12,7 @@ const organizations = ["Acme Inc", "Division Inc"];
 function OrganizationPopover(
   props: PropsWithChildren<OrganizationPopoverProps>,
 ) {
-  const { anchorEl, onClose, open } = props;
+  const { anchorEl, onClose, open, ...other } = props;
 
   // eslint-disable-next-line
   const handleChange = (organization: string): void => {
@@ -28,9 +28,10 @@ function OrganizationPopover(
       }}
       keepMounted
       onClose={onClose}
-      open={Boolean(open)}
+      open={!!open}
       PaperProps={{ sx: { width: 248 } }}
       transitionDuration={0}
+      {...other}
     >
       {organizations.map((organization) => (
         <MenuItem

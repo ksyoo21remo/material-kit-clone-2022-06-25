@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Avatar, Box, ButtonBase } from "@mui/material";
-import { UserCircle as UserCircleIcon } from "../../../icons/user-circle";
 import AccountPopover from "./AccountPopover";
+import { UserCircle as UserCircleIcon } from "../../../icons/user-circle";
 
 function AccountButton() {
   const anchorRef = useRef<HTMLButtonElement | null>(null);

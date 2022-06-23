@@ -1,18 +1,19 @@
 import React, { PropsWithChildren } from "react";
+import { Link } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 import {
   Avatar,
   Box,
   Divider,
+  MenuItem,
   ListItemIcon,
   ListItemText,
-  MenuItem,
   Popover,
   Typography,
 } from "@mui/material";
-import { Logout as LogoutIcon } from "@mui/icons-material";
 import { Cog as CogIcon } from "../../../icons/cog";
-import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from "../../../icons/switch-horizontal-outlined";
 import { UserCircle as UserCircleIcon } from "../../../icons/user-circle";
+import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from "../../../icons/switch-horizontal-outlined";
 
 interface AccountPopoverProps {
   anchorEl: null | Element;
@@ -23,7 +24,7 @@ interface AccountPopoverProps {
 function AccountPopover(
   props: PropsWithChildren<AccountPopoverProps>,
 ) {
-  const { anchorEl, onClose, open } = props;
+  const { anchorEl, onClose, open, ...other } = props;
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
@@ -51,9 +52,10 @@ function AccountPopover(
       }}
       keepMounted
       onClose={onClose}
-      open={Boolean(open)}
+      open={!!open}
       PaperProps={{ sx: { width: 300 } }}
       transitionDuration={0}
+      {...other}
     >
       <Box
         sx={{
@@ -84,42 +86,54 @@ function AccountPopover(
       </Box>
       <Divider />
       <Box sx={{ my: 1 }}>
-        <MenuItem component="a">
+        <Link to="">
+          <MenuItem>
+            <ListItemIcon>
+              <UserCircleIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText
+              primary={
+                <Typography variant="body1">Profile</Typography>
+              }
+            />
+          </MenuItem>
+        </Link>
+        <Link to="">
+          <MenuItem>
+            <ListItemIcon>
+              <CogIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText
+              primary={
+                <Typography variant="body1">Settings</Typography>
+              }
+            />
+          </MenuItem>
+        </Link>
+        <Link to="">
+          <MenuItem>
+            <ListItemIcon>
+              <SwitchHorizontalOutlinedIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText
+              primary={
+                <Typography variant="body1">
+                  Change organization
+                </Typography>
+              }
+            />
+          </MenuItem>
+        </Link>
+        <Divider sx={{ my: 1 }} />
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
-            <UserCircleIcon fontSize="small" />
+            <LogoutIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText
-            primary={<Typography variant="body1">프로필</Typography>}
-          />
-        </MenuItem>
-        <MenuItem component="a">
-          <ListItemIcon>
-            <CogIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText
-            primary={<Typography variant="body1">설정</Typography>}
-          />
-        </MenuItem>
-        <MenuItem component="a">
-          <ListItemIcon>
-            <SwitchHorizontalOutlinedIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText
-            primary={
-              <Typography variant="body1">회사 변경</Typography>
-            }
+            primary={<Typography variant="body1">Logout</Typography>}
           />
         </MenuItem>
       </Box>
-      <Divider />
-      <MenuItem onClick={handleLogout}>
-        <ListItemIcon>
-          <LogoutIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText
-          primary={<Typography variant="body1">Logout</Typography>}
-        />
-      </MenuItem>
     </Popover>
   );
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
+import type { AppBarProps } from "@mui/material";
 import {
   AppBar,
   Box,
@@ -6,8 +7,8 @@ import {
   styled,
   Toolbar,
 } from "@mui/material";
-import { Menu as MenuIcon } from "../../../icons/menu";
 import AccountButton from "./AccountButton";
+import { Menu as MenuIcon } from "../../../icons/menu";
 
 // prettier-ignore
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
@@ -25,7 +26,15 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
     }),
 }));
 
-function DashboardNavbar() {
+interface DashboardNavbarProps extends AppBarProps {
+  onOpenSidebar?: () => void;
+}
+
+function DashboardNavbar(
+  props: PropsWithChildren<DashboardNavbarProps>,
+) {
+  const { onOpenSidebar, ...other } = props;
+
   return (
     <>
       <DashboardNavbarRoot
@@ -37,6 +46,7 @@ function DashboardNavbar() {
             lg: "calc(100% - 280px)",
           },
         }}
+        {...other}
       >
         <Toolbar
           disableGutters
@@ -47,8 +57,13 @@ function DashboardNavbar() {
           }}
         >
           <IconButton
-            onClick={() => {}}
-            sx={{ display: { xs: "inline-flex", lg: "none" } }}
+            onClick={onOpenSidebar}
+            sx={{
+              display: {
+                xs: "inline-flex",
+                lg: "none",
+              },
+            }}
           >
             <MenuIcon fontSize="small" />
           </IconButton>
