@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { paths } from "../../../paths";
 
 interface Item {
   title: string;
@@ -19,11 +20,11 @@ export const sidebarSectionsData: Section[] = [
     items: [
       {
         title: "최고관리자",
-        path: "/dashboard/super-admin",
+        path: `/${paths.dashboard.root}/${paths.dashboard.admin.super}`,
       },
       {
         title: "센터관리자",
-        path: "/dashboard/center-admin",
+        path: `/${paths.dashboard.root}/${paths.dashboard.admin.center}`,
       },
     ],
   },
@@ -32,11 +33,11 @@ export const sidebarSectionsData: Section[] = [
     items: [
       {
         title: "개별 운동",
-        path: "/dashboard/exercise",
+        path: `/${paths.dashboard.root}/${paths.dashboard.exercise.each}`,
       },
       {
         title: "운동 클래스",
-        path: "/dashboard/exercise-class",
+        path: `/${paths.dashboard.root}/${paths.dashboard.exercise.class}`,
       },
     ],
   },
@@ -45,7 +46,7 @@ export const sidebarSectionsData: Section[] = [
     items: [
       {
         title: "운동전문가",
-        path: "/dashboard/expert",
+        path: `/${paths.dashboard.root}/${paths.dashboard.expert.all}`,
       },
     ],
   },
@@ -54,7 +55,7 @@ export const sidebarSectionsData: Section[] = [
     items: [
       {
         title: "일반회원",
-        path: "/dashboard/normal-user",
+        path: `/${paths.dashboard.root}/${paths.dashboard.member.all}`,
       },
     ],
   },

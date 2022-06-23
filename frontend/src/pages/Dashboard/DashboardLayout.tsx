@@ -34,9 +34,7 @@ function DashboardLayout(
             width: "100%",
           }}
         >
-          <Box>대시보드 헤더</Box>
           {children}
-          <Box>대시보드 푸터</Box>
         </Box>
       </DashboardLayoutRoot>
       <DashboardNavbar

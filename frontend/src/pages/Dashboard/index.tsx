@@ -1,9 +1,14 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import DashboardLayout from "./DashboardLayout";
 import SettingsButton from "./settings/SettingsButton";
+import Admin from "./Admin";
+import Exercise from "./Exercise";
+import Expert from "./Expert";
+import Member from "./Member";
+import { Outlet } from "react-router-dom";
 
-function Dashboard() {
+function View() {
   return (
     <>
       <SettingsButton />
@@ -16,32 +21,20 @@ function Dashboard() {
           }}
         >
           <Box sx={{ mb: 4 }}>
-            <Grid
-              container
-              justifyContent="space-between"
-              spacing={3}
-            >
-              <Grid item>
-                <Typography variant="h4">
-                  대시보드 메인 페이지 1
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h4">
-                  대시보드 메인 페이지 2
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="h4">
-                  대시보드 메인 페이지 3
-                </Typography>
-              </Grid>
-            </Grid>
+            <Outlet />
           </Box>
         </Box>
       </DashboardLayout>
     </>
   );
 }
+
+const Dashboard = {
+  View,
+  Admin,
+  Exercise,
+  Expert,
+  Member,
+};
 
 export default Dashboard;
