@@ -1,13 +1,18 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import Authentication from "./pages/Authentication";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import { paths } from "./paths";
 
 function App() {
+  // prettier-ignore
   return (
-    <Container>
-      <Box>
-        <Typography>안녕 Material UI</Typography>
-      </Box>
-    </Container>
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path={paths.authentication} element={<Authentication />} />
+      <Route path={paths.dashboard} element={<Dashboard />} />
+    </Routes>
   );
 }
 
