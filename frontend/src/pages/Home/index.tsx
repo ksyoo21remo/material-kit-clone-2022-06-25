@@ -13,14 +13,14 @@ export default function Home() {
   return (
     <Container>
       <Box>
-        <RouterLink to={paths.authentication}>
+        <RouterLink to={paths.authentication.root}>
           <Link component={Button} underline="hover">
             <Typography variant="h4">Authentication</Typography>
           </Link>
         </RouterLink>
       </Box>
       <Box>
-        <RouterLink to={paths.dashboard}>
+        <RouterLink to={paths.dashboard.root}>
           <Link component={Button} underline="hover">
             <Typography variant="h4">Dashboard</Typography>
           </Link>

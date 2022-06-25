@@ -1,12 +1,7 @@
-import { Box, Container, Typography } from "@mui/material";
-import React from "react";
+import Main from "./Main";
 
-export default function Dashboard() {
-  return (
-    <Container>
-      <Box>
-        <Typography>Hello Dashboard</Typography>
-      </Box>
-    </Container>
-  );
-}
+const Dashboard = {
+  Main,
+};
+
+export default Dashboard;

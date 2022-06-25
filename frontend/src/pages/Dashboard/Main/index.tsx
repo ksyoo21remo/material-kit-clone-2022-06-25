@@ -1,11 +1,11 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 
-export default function Authentication() {
+export default function Main() {
   return (
     <Container>
       <Box>
-        <Typography>Hello Authentication</Typography>
+        <Typography>Hello Dashboard</Typography>
       </Box>
     </Container>
   );
