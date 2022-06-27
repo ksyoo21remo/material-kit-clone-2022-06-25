@@ -1,6 +1,7 @@
 import { Box, Container } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "./DashboardLayout";
+import GuestGuard from "./GuestGuard";
 
 export default function Main() {
   // eslint-disable-next-line
@@ -23,19 +24,21 @@ export default function Main() {
 
   return (
     <>
-      <DashboardLayout>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            py: 8,
-          }}
-        >
-          <Container maxWidth="xl">
-            <Box sx={{ mb: 4 }}></Box>
-          </Container>
-        </Box>
-      </DashboardLayout>
+      <GuestGuard>
+        <DashboardLayout>
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              py: 8,
+            }}
+          >
+            <Container maxWidth="xl">
+              <Box sx={{ mb: 4 }}></Box>
+            </Container>
+          </Box>
+        </DashboardLayout>
+      </GuestGuard>
     </>
   );
 }

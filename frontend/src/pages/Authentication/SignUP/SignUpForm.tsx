@@ -43,7 +43,7 @@ export default function SignUpForm(props: any) {
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         await register(values.email, values.name, values.password);
-        navigate(paths.dashboard.root);
+        navigate(`/${paths.dashboard.root}`);
       } catch (err) {
         console.error(err);
         helpers.setStatus({ success: false });

@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import { useSettings } from "./hooks/useSettings";
 import Authentication from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
@@ -21,23 +22,23 @@ function App() {
         mode: settings.theme,
       })}
     >
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path={paths.authentication.root}>
-          <Route index element={<Navigate to={paths.authentication.signIn} replace={true} />} />
-          <Route path={paths.authentication.signIn} element={<Authentication.SignIn />} />
-          <Route path={paths.authentication.signUp} element={<Authentication.SignUp />} />
-        </Route>
-        <Route path={paths.dashboard.root}>
-          <Route index element={<Navigate to={paths.dashboard.main} replace={true} />} />
-          <Route path={paths.dashboard.main} element={<Dashboard.Main />} />
-        </Route>
-        <Route path="*" element={<Error.NotFound />} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path={paths.authentication.root}>
+            <Route index element={<Navigate to={paths.authentication.signIn} replace={true} />} />
+            <Route path={paths.authentication.signIn} element={<Authentication.SignIn />} />
+            <Route path={paths.authentication.signUp} element={<Authentication.SignUp />} />
+          </Route>
+          <Route path={paths.dashboard.root}>
+            <Route index element={<Navigate to={paths.dashboard.main} replace={true} />} />
+            <Route path={paths.dashboard.main} element={<Dashboard.Main />} />
+          </Route>
+          <Route path="*" element={<Error.NotFound />} />
+        </Routes>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
 
 export default App;
-
-// * CUM2 64HX UGN3

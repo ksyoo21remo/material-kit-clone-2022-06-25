@@ -33,7 +33,7 @@ export default function SignInForm(props: any) {
     onSubmit: async (values, helpers): Promise<void> => {
       try {
         await login(values.email, values.password);
-        navigate(paths.dashboard.root);
+        navigate(`/${paths.dashboard.root}`);
       } catch (err) {
         console.error(err);
         helpers.setStatus({ success: false });
