@@ -12,8 +12,8 @@ import {
 import { format, subDays } from "date-fns";
 import numeral from "numeral";
 import React from "react";
-import Scrollbar from "../../../../components/Scrollbar";
-import SeverityPill from "../../../../components/SeverityPill";
+import Scrollbar from "../../../components/Scrollbar";
+import SeverityPill from "../../../components/SeverityPill";
 
 interface Transaction {
   id: string;
