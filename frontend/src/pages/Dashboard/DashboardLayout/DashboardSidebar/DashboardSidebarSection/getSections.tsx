@@ -23,6 +23,7 @@ import { Truck as TruckIcon } from "../../../../../icons/Truck";
 import { User as UserIcon } from "../../../../../icons/User";
 import { UserCircle as UserCircleIcon } from "../../../../../icons/UserCircle";
 import { XCircle as XCircleIcon } from "../../../../../icons/XCircle";
+import { paths } from "../../../../../paths";
 
 const getSections = (t: TFunction): Section[] => [
   {
@@ -30,22 +31,22 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t("Overview"),
-        path: "/dashboard",
+        path: `/${paths.dashboard.root}/${paths.dashboard.overview}`,
         icon: <HomeIcon fontSize="small" />,
       },
       {
         title: t("Analytics"),
-        path: "/dashboard/analytics",
+        path: `/${paths.dashboard.root}/${paths.dashboard.analytics}`,
         icon: <ChartBarIcon fontSize="small" />,
       },
       {
         title: t("Finance"),
-        path: "/dashboard/finance",
+        path: `/${paths.dashboard.root}/${paths.dashboard.finance}`,
         icon: <ChartPieIcon fontSize="small" />,
       },
       {
         title: t("Logistics"),
-        path: "/dashboard/logistics",
+        path: `/${paths.dashboard.root}/${paths.dashboard.logistics}`,
         icon: <TruckIcon fontSize="small" />,
         chip: (
           <Chip
@@ -67,7 +68,7 @@ const getSections = (t: TFunction): Section[] => [
       },
       {
         title: t("Account"),
-        path: "/dashboard/account",
+        path: `/${paths.dashboard.root}/${paths.dashboard.account}`,
         icon: <UserCircleIcon fontSize="small" />,
       },
     ],
@@ -77,65 +78,65 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t("Customers"),
-        path: "/dashboard/customers",
+        path: `/${paths.dashboard.root}/${paths.dashboard.customers.root}`,
         icon: <UserIcon fontSize="small" />,
         children: [
           {
             title: t("List"),
-            path: "/dashboard/customers",
+            path: `/${paths.dashboard.root}/${paths.dashboard.customers.root}`,
           },
           {
             title: t("Details"),
-            path: "/dashboard/customers/1",
+            path: `/${paths.dashboard.root}/${paths.dashboard.customers.root}/1234`,
           },
           {
             title: t("Edit"),
-            path: "/dashboard/customers/1/edit",
+            path: `/${paths.dashboard.root}/${paths.dashboard.customers.root}/1234/${paths.dashboard.customers.edit}`,
           },
         ],
       },
       {
         title: t("Products"),
-        path: "/dashboard/products",
+        path: `/${paths.dashboard.root}/${paths.dashboard.products.root}`,
         icon: <ShoppingBagIcon fontSize="small" />,
         children: [
           {
             title: t("List"),
-            path: "/dashboard/products",
+            path: `/${paths.dashboard.root}/${paths.dashboard.products.root}`,
           },
           {
             title: t("Create"),
-            path: "/dashboard/products/new",
+            path: `/${paths.dashboard.root}/${paths.dashboard.products.root}/${paths.dashboard.products.create}`,
           },
         ],
       },
       {
         title: t("Orders"),
         icon: <ShoppingCartIcon fontSize="small" />,
-        path: "/dashboard/orders",
+        path: `/${paths.dashboard.root}/${paths.dashboard.orders.root}`,
         children: [
           {
             title: t("List"),
-            path: "/dashboard/orders",
+            path: `/${paths.dashboard.root}/${paths.dashboard.orders.root}`,
           },
           {
             title: t("Details"),
-            path: "/dashboard/orders/1",
+            path: `/${paths.dashboard.root}/${paths.dashboard.orders.root}/5678`,
           },
         ],
       },
       {
         title: t("Invoices"),
-        path: "/dashboard/invoices",
+        path: `/${paths.dashboard.root}/${paths.dashboard.invoices.root}`,
         icon: <ReceiptTaxIcon fontSize="small" />,
         children: [
           {
             title: t("List"),
-            path: "/dashboard/invoices",
+            path: `/${paths.dashboard.root}/${paths.dashboard.invoices.root}`,
           },
           {
             title: t("Details"),
-            path: "/dashboard/invoices/1",
+            path: `/${paths.dashboard.root}/${paths.dashboard.invoices.root}/9012`,
           },
         ],
       },
@@ -146,54 +147,54 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t("Job Listings"),
-        path: "/dashboard/jobs",
+        path: `/${paths.dashboard.root}/${paths.dashboard.jobs.root}`,
         icon: <OfficeBuildingIcon fontSize="small" />,
         children: [
           {
             title: t("Browse"),
-            path: "/dashboard/jobs",
+            path: `/${paths.dashboard.root}/${paths.dashboard.jobs.root}`,
           },
           {
             title: t("Details"),
-            path: "/dashboard/jobs/companies/1",
+            path: `/${paths.dashboard.root}/${paths.dashboard.jobs.root}/${paths.dashboard.jobs.companies}/3456`,
           },
           {
             title: t("Create"),
-            path: "/dashboard/jobs/new",
+            path: `/${paths.dashboard.root}/${paths.dashboard.jobs.root}/${paths.dashboard.jobs.create}`,
           },
         ],
       },
       {
         title: t("Social Media"),
-        path: "/dashboard/social",
+        path: `/${paths.dashboard.root}/${paths.dashboard.socialMedia.root}`,
         icon: <ShareIcon fontSize="small" />,
         children: [
           {
             title: t("Profile"),
-            path: "/dashboard/social/profile",
+            path: `/${paths.dashboard.root}/${paths.dashboard.socialMedia.root}/${paths.dashboard.socialMedia.profile}`,
           },
           {
             title: t("Feed"),
-            path: "/dashboard/social/feed",
+            path: `/${paths.dashboard.root}/${paths.dashboard.socialMedia.root}/${paths.dashboard.socialMedia.feed}`,
           },
         ],
       },
       {
         title: t("Blog"),
-        path: "/blog",
+        path: `/${paths.blog.root}`,
         icon: <NewspaperIcon fontSize="small" />,
         children: [
           {
             title: t("Post List"),
-            path: "/blog",
+            path: `/${paths.blog.root}/${paths.blog.posts.root}`,
           },
           {
             title: t("Post Details"),
-            path: "/blog/1",
+            path: `/${paths.blog.root}/${paths.blog.posts.root}/7890`,
           },
           {
             title: t("Post Create"),
-            path: "/blog/new",
+            path: `/${paths.blog.root}/${paths.blog.posts.root}/${paths.blog.posts.create}`,
           },
         ],
       },
@@ -204,22 +205,22 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t("Kanban"),
-        path: "/dashboard/kanban",
+        path: `/${paths.dashboard.root}/${paths.dashboard.kanban}`,
         icon: <ClipboardListIcon fontSize="small" />,
       },
       {
         title: t("Mail"),
-        path: "/dashboard/mail",
+        path: `/${paths.dashboard.root}/${paths.dashboard.mail}`,
         icon: <MailIcon fontSize="small" />,
       },
       {
         title: t("Chat"),
-        path: "/dashboard/chat",
+        path: `/${paths.dashboard.root}/${paths.dashboard.chat}`,
         icon: <ChatAlt2Icon fontSize="small" />,
       },
       {
         title: t("Calendar"),
-        path: "/dashboard/calendar",
+        path: `/${paths.dashboard.root}/${paths.dashboard.calendar}`,
         icon: <CalendarIcon fontSize="small" />,
       },
     ],
@@ -229,50 +230,50 @@ const getSections = (t: TFunction): Section[] => [
     items: [
       {
         title: t("Auth"),
-        path: "/authentication",
+        path: `/${paths.authentication.root}`,
         icon: <LockClosedIcon fontSize="small" />,
         children: [
           {
             title: t("Register"),
-            path: "/authentication/register?disableGuard=true",
+            path: `/${paths.authentication.root}/${paths.authentication.signUp}?disableGuard=true`,
           },
           {
             title: t("Login"),
-            path: "/authentication/login?disableGuard=true",
+            path: `/${paths.authentication.root}/${paths.authentication.signIn}?disableGuard=true`,
           },
         ],
       },
       {
         title: t("Pricing"),
-        path: "/dashboard/pricing",
+        path: `/${paths.dashboard.root}/${paths.dashboard.pricing}`,
         icon: <CreditCardIcon fontSize="small" />,
       },
       {
         title: t("Checkout"),
-        path: "/checkout",
+        path: `/${paths.checkout}`,
         icon: <CashIcon fontSize="small" />,
       },
       {
         title: t("Contact"),
-        path: "/contact",
+        path: `/${paths.contact}`,
         icon: <MailOpenIcon fontSize="small" />,
       },
       {
         title: t("Error"),
-        path: "/error",
+        path: `/${paths.error.root}`,
         icon: <XCircleIcon fontSize="small" />,
         children: [
           {
             title: "401",
-            path: "/401",
+            path: `/${paths.error.root}/${paths.error[401]}`,
           },
           {
             title: "404",
-            path: "/404",
+            path: `/${paths.error.root}/${paths.error[404]}`,
           },
           {
             title: "500",
-            path: "/500",
+            path: `/${paths.error.root}/${paths.error[500]}`,
           },
         ],
       },
