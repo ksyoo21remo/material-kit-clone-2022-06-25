@@ -12,8 +12,8 @@ import { formatDistanceToNowStrict } from "date-fns";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { chatApi } from "../../../../../__fake-api__/chatApi";
+import StatusIndicator from "../../../../../components/StatusIndicator";
 import { Contact } from "../../../../../types/Chat";
-import StatusIndicator from "../../../../../widgets/StatusIndicator";
 
 interface ContactsPopoverProps {
   anchorEl: null | Element;

@@ -18,8 +18,8 @@ import { Link as RouterLink, useLocation } from "react-router-dom";
 import DashboardSidebarSection from "./DashboardSidebarSection";
 import getSections from "./DashboardSidebarSection/getSections";
 import OrganizationPopover from "./OrganizationPopover";
+import { Logo } from "../../../../components/Logo";
 import Scrollbar from "../../../../components/Scrollbar";
-import { Logo } from "../../../../widgets/Logo";
 
 interface DashboardSidebarProps {
   onClose?: () => void;

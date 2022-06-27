@@ -17,10 +17,10 @@ import React, {
   SyntheticEvent,
   useState,
 } from "react";
+import Tip from "../../../../../components/Tip";
 import { Search as SearchIcon } from "../../../../../icons/Search";
 import { X as XIcon } from "../../../../../icons/X";
 import { wait } from "../../../../../utils/wait";
-import Tip from "../../../../../widgets/Tip";
 
 interface ContentSearchProps {
   onClose?: () => void;

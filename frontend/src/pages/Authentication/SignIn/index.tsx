@@ -13,7 +13,7 @@ import {
 import SignInForm from "./SignInForm";
 import AuthBanner from "../AuthBanner";
 import { Platform, platformIcons } from "../platformIcons";
-import { Logo } from "../../../widgets/Logo";
+import { Logo } from "../../../components/Logo";
 import { useAuth } from "../../../hooks/useAuth";
 import { paths } from "../../../paths";
 

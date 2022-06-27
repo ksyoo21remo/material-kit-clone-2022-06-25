@@ -13,8 +13,8 @@ import {
 import SignUpForm from "./SignUpForm";
 import AuthBanner from "../AuthBanner";
 import { Platform, platformIcons } from "../platformIcons";
+import { Logo } from "../../../components/Logo";
 import { useAuth } from "../../../hooks/useAuth";
-import { Logo } from "../../../widgets/Logo";
 import { paths } from "../../../paths";
 
 export default function SignUp() {

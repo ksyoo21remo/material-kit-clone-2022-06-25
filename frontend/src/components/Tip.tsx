@@ -5,24 +5,24 @@ interface TipProps {
   message: string;
 }
 
-const TipRoot = styled(Box)(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === "dark"
-      ? theme.palette.primary.light
-      : theme.palette.primary.dark,
-  borderRadius: theme.shape.borderRadius,
-  display: "flex",
-  padding: theme.spacing(1),
-}));
 // const TipRoot = styled(Box)(({ theme }) => ({
 //   backgroundColor:
 //     theme.palette.mode === "dark"
-//       ? theme.palette.neutral![800]
-//       : theme.palette.neutral![100],
+//       ? theme.palette.primary.light
+//       : theme.palette.primary.dark,
 //   borderRadius: theme.shape.borderRadius,
 //   display: "flex",
 //   padding: theme.spacing(1),
 // }));
+const TipRoot = styled(Box)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.neutral![800]
+      : theme.palette.neutral![100],
+  borderRadius: theme.shape.borderRadius,
+  display: "flex",
+  padding: theme.spacing(1),
+}));
 
 export default function Tip(props: PropsWithChildren<TipProps>) {
   const { message } = props;
