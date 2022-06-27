@@ -6,7 +6,6 @@ import {
   Divider,
   Grid,
   InputAdornment,
-  MenuItem,
   Tab,
   Tabs,
   TextField,
@@ -392,9 +391,9 @@ export default function List() {
                 value={sort}
               >
                 {sortOptions.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
+                  <option key={option.value} value={option.value}>
                     {option.label}
-                  </MenuItem>
+                  </option>
                 ))}
               </TextField>
             </Box>
