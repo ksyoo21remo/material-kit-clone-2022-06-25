@@ -6,6 +6,6 @@ export const paths = {
   },
   dashboard: {
     root: "dashboard",
-    main: "main",
+    overview: "overview",
   },
 };

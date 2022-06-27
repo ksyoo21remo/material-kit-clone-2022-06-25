@@ -25,14 +25,14 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route index element={<Home />} />
-          <Route path={paths.authentication.root}>
+          <Route path={paths.authentication.root} element={<Authentication.Main />}>
             <Route index element={<Navigate to={paths.authentication.signIn} replace={true} />} />
             <Route path={paths.authentication.signIn} element={<Authentication.SignIn />} />
             <Route path={paths.authentication.signUp} element={<Authentication.SignUp />} />
           </Route>
-          <Route path={paths.dashboard.root}>
-            <Route index element={<Navigate to={paths.dashboard.main} replace={true} />} />
-            <Route path={paths.dashboard.main} element={<Dashboard.Main />} />
+          <Route path={paths.dashboard.root} element={<Dashboard.Main />}>
+            <Route index element={<Navigate to={paths.dashboard.overview} replace={true} />} />
+            <Route path={paths.dashboard.overview} element={<Dashboard.Overview />} />
           </Route>
           <Route path="*" element={<Error.NotFound />} />
         </Routes>
