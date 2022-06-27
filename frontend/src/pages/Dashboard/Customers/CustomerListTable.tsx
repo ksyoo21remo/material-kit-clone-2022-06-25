@@ -20,12 +20,13 @@ import React, {
   PropsWithChildren,
   useState,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { Customer } from "./types";
 import Scrollbar from "../../../components/Scrollbar";
 import { ArrowRight as ArrowRightIcon } from "../../../icons/ArrowRight";
 import { PencilAlt as PencilAltIcon } from "../../../icons/PencilAlt";
 import { getInitials } from "../../../utils/getInitials";
+import { paths } from "../../../paths";
 
 interface CustomerListTableProps {
   customers: Customer[];
@@ -171,14 +172,16 @@ export default function CustomerListTable(
                         {getInitials(customer.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <Link to="/dashboard/customers/1">
+                        <RouterLink
+                          to={`/${paths.dashboard.root}/${paths.dashboard.customers.root}/${customer.id}`}
+                        >
                           <Typography
                             color="inherit"
                             variant="subtitle2"
                           >
                             {customer.name}
                           </Typography>
-                        </Link>
+                        </RouterLink>
                         <Typography
                           color="textSecondary"
                           variant="body2"
@@ -203,16 +206,23 @@ export default function CustomerListTable(
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <Link to="/dashboard/customers/1/edit">
-                      <IconButton component="a">
+                    <RouterLink
+                      to={
+                        `/${paths.dashboard.root}/${paths.dashboard.customers.root}/${customer.id}` +
+                        `/${paths.dashboard.customers.edit}`
+                      }
+                    >
+                      <IconButton>
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
-                    </Link>
-                    <Link to="/dashboard/customers/1">
-                      <IconButton component="a">
+                    </RouterLink>
+                    <RouterLink
+                      to={`/${paths.dashboard.root}/${paths.dashboard.customers.root}/${customer.id}`}
+                    >
+                      <IconButton>
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
-                    </Link>
+                    </RouterLink>
                   </TableCell>
                 </TableRow>
               );

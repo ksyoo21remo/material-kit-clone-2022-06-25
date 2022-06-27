@@ -8,6 +8,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { paths } from "../../paths";
 
 export default function NotFound() {
   const theme = useTheme();
@@ -66,7 +67,7 @@ export default function NotFound() {
               mt: 6,
             }}
           >
-            <RouterLink to="/dashboard">
+            <RouterLink to={`/${paths.dashboard.root}`}>
               <Button variant="outlined">Back to Dashboard</Button>
             </RouterLink>
           </Box>

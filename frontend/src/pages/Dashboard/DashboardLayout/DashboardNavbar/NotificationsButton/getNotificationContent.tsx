@@ -10,6 +10,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { ChatAlt as ChatAltIcon } from "../../../../../icons/ChatAlt";
 import { UserCircle as UserCircleIcon } from "../../../../../icons/UserCircle";
+import { paths } from "../../../../../paths";
 import { Notification } from "../../../../../types/Notification";
 
 export default function getNotificationContent(
@@ -40,7 +41,7 @@ export default function getNotificationContent(
               <Typography sx={{ mr: 0.5 }} variant="body2">
                   added a new job
               </Typography>
-              <RouterLink to="/dashboard/jobs">
+              <RouterLink to={`/${paths.dashboard.root}/${paths.dashboard.jobs.root}`}>
                 {notification.job}
               </RouterLink>
             </Box>
@@ -112,7 +113,7 @@ export default function getNotificationContent(
               <Typography variant="body2" sx={{ mr: 0.5 }}>
                   created
               </Typography>
-              <RouterLink to="/dashboard/jobs">
+              <RouterLink to={`/${paths.dashboard.root}/${paths.dashboard.jobs.root}`}>
                 {notification.company}
               </RouterLink>
             </Box>

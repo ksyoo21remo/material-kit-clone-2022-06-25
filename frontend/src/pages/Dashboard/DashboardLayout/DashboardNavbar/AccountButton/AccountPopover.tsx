@@ -16,6 +16,7 @@ import { useAuth } from "../../../../../hooks/useAuth";
 import { Cog as CogIcon } from "../../../../../icons/Cog";
 import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from "../../../../../icons/SwitchHorizontalOutlined";
 import { UserCircle as UserCircleIcon } from "../../../../../icons/UserCircle";
+import { paths } from "../../../../../paths";
 
 interface AccountPopoverProps {
   anchorEl: null | Element;
@@ -90,7 +91,9 @@ export default function AccountPopover(
       </Box>
       <Divider />
       <Box sx={{ my: 1 }}>
-        <RouterLink to="/dashboard/social/profile">
+        <RouterLink
+          to={`/${paths.dashboard.root}/${paths.dashboard.socialMedia.root}/${paths.dashboard.socialMedia.profile}`}
+        >
           <MenuItem>
             <ListItemIcon>
               <UserCircleIcon fontSize="small" />
@@ -102,7 +105,9 @@ export default function AccountPopover(
             />
           </MenuItem>
         </RouterLink>
-        <RouterLink to="/dashboard/account">
+        <RouterLink
+          to={`/${paths.dashboard.root}/${paths.dashboard.account}`}
+        >
           <MenuItem>
             <ListItemIcon>
               <CogIcon fontSize="small" />
@@ -114,7 +119,7 @@ export default function AccountPopover(
             />
           </MenuItem>
         </RouterLink>
-        <RouterLink to="/dashboard">
+        <RouterLink to={`/${paths.dashboard.root}`}>
           <MenuItem>
             <ListItemIcon>
               <SwitchHorizontalOutlinedIcon fontSize="small" />
