@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useSettings } from "./hooks/useSettings";
 import Authentication from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
+import Error from "./pages/Error";
 import Home from "./pages/Home";
 import { paths } from "./paths";
 import { createTheme } from "./theme";
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Navigate to={paths.dashboard.main} replace={true} />} />
           <Route path={paths.dashboard.main} element={<Dashboard.Main />} />
         </Route>
+        <Route path="*" element={<Error.NotFound />} />
       </Routes>
     </ThemeProvider>
   );
