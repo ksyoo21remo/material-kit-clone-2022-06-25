@@ -7,9 +7,10 @@ import React, {
 } from "react";
 import { authApi } from "../__fake-api__/authApi";
 import type { User } from "../types/User";
+import { Platform } from "../pages/Authentication/platformIcons";
 
 export interface AuthContextValue extends State {
-  platform: string;
+  platform: Platform;
   // eslint-disable-next-line
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
